@@ -1,1 +1,21 @@
-# Holder
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+    
+jobs:
+  build:
+    name:
+    runs-on:
+    
+    steps:
+    - name: Checkout
+    - name: Configure AWS credentials
+    - name: Login to Amazon ECR
+    - name: Build, tag & push image to ECR
+    - name: Update image version in HELM chart
+    - name: Commit and Push changes
+    
+    
