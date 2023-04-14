@@ -40,12 +40,12 @@ jobs:
       run: |
         git_hash=$(git rev-parse --short "$GITHUB_SHA")
         version=$(cat ./charts/helm-example/values.yaml | grep version: | awk '{print $2}')
+        new_version=${GITHUB_REF##*/}-$git_hash
+        echo $git_hash
         echo $version
-        sed -i "s/$version/${GITHUB_REF##*/}-$git_hash/" ./charts/helm-example/values.yaml
+        echo $new_version
+        sed -i "s/$version/$new_version/g" ./charts/helm-example/values.yaml
+        version2=$(cat ./charts/helm-example/values.yaml | grep version: | awk '{print $2}')
+        echo $version2
     
-    - name: Commit and Push changes
-      uses: devops-infra/action-commit-push@v0.3
-      with:
-        github_token: ${{secrets.REPO_TOKEN}}
-        commit_message: Version updated
     
