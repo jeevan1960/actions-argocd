@@ -9,7 +9,7 @@ image:
   repository: 429535638424.dkr.ecr.us-east-1.amazonaws.com/gitops-argocd
   version: main-e145478
 
-imagePullSecrets: []
+imagePullSecrets: ecr
 nameOverride: ""
 fullnameOverride: ""
 
