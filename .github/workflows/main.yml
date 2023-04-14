@@ -39,7 +39,7 @@ jobs:
     - name: Update image version in HELM chart
       run: |
         git_hash=$(git rev-parse --short "$GITHUB_SHA")
-        version=$(cat ./charts/helm-example/values.yaml | grep version: | aws '{print $2}')
+        version=$(cat ./charts/helm-example/values.yaml | grep version: | awk '{print $2}')
         sed "s/$version/${GITHUB_REF##*/}-git_hash/" ./charts/helm-example/values.yaml
     
     - name: Commit and Push changes
