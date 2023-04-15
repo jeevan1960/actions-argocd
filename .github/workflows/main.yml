@@ -48,4 +48,8 @@ jobs:
         version2=$(cat ./charts/helm-example/values.yaml | grep version: | awk '{print $2}')
         echo $version2
     
-    
+    - name: Commit and Push changes
+      uses: devops-infra/action-commit-push@v0.3
+      with:
+        github_token: ${{secrets.REPO_TOKEN}}
+        commit_message: Version updated
